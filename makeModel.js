@@ -2,18 +2,22 @@
 const process = require("process");
 const fs = require("fs-extra");
 
-const argus = process.argv.slice(2);
-const configArg = argus.find((element) => element.includes("--config="));
-if (configArg) {
-  const configFilePath = configArg.split("=")[1];
-  let rawdata = fs.readFileSync(configFilePath);
-  let configData = JSON.parse(rawdata);
-  await createModel(configData);
-  await createRouter(configData.modeName);
-  await editApi(configData.modeName.toLowerCase());
-} else {
-  console.log("config file!");
-}
+const main = async () => {
+  const argus = process.argv.slice(2);
+  const configArg = argus.find((element) => element.includes("--config="));
+  if (configArg) {
+    const configFilePath = configArg.split("=")[1];
+    let rawdata = fs.readFileSync(configFilePath);
+    let configData = JSON.parse(rawdata);
+    await createModel(configData);
+    await createRouter(configData.modeName);
+    await editApi(configData.modeName.toLowerCase());
+  } else {
+    console.log("config file!");
+  }
+};
+
+main();
 
 function controllerString(modelName) {
   return `const { ${modelName} } = require("../../../models");
