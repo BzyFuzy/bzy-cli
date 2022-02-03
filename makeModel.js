@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import { argv } from "process";
-import fs from "fs-extra";
+const process = require("process");
+const fs = require("fs-extra");
 
-const argus = argv.slice(2);
+const argus = process.argv.slice(2);
 const configArg = argus.find((element) => element.includes("--config="));
 if (configArg) {
   const configFilePath = configArg.split("=")[1];

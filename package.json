@@ -1,5 +1,5 @@
 {
-  "name": "bzy-cli",
+  "name": "bzy-exp-cli",
   "version": "0.0.1",
   "description": "bzy-cli",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "bzy-init": "./index.js",
     "bzy-makeModel": "./makeModel.js"
   },
-  "author": "bzy.fuzy",
+  "author": "bzyfuzy",
   "license": "ISC",
   "dependencies": {
     "fs-extra": "^10.0.0",
